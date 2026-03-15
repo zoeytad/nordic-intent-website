@@ -314,6 +314,59 @@ h3 {
 }
 
 /* ============================================
+   AI Block
+   ============================================ */
+.ai-block {
+  background: var(--white);
+  padding: 6rem var(--px);
+  border-top: 3px solid var(--accent);
+}
+.ai-block__inner {
+  max-width: var(--max-w);
+  margin: 0 auto;
+}
+.ai-block__heading {
+  font-size: clamp(2rem, 5vw, 3.5rem);
+  line-height: 1.1;
+  letter-spacing: -0.02em;
+  margin-top: 1rem;
+  margin-bottom: 4rem;
+  max-width: 700px;
+}
+.ai-block__grid {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 0;
+  border-top: 1px solid var(--black);
+  border-left: 1px solid var(--black);
+}
+.ai-block__item {
+  padding: 2.5rem;
+  border-right: 1px solid var(--black);
+  border-bottom: 1px solid var(--black);
+  transition: background 0.2s, color 0.2s;
+}
+.ai-block__item:hover {
+  background: var(--black);
+  color: var(--white);
+}
+.ai-block__item:hover p {
+  color: rgba(255,255,255,0.6);
+}
+.ai-block__item h3 {
+  margin-bottom: 0.75rem;
+}
+.ai-block__item p {
+  font-size: 1rem;
+  line-height: 1.65;
+  color: var(--gray);
+}
+
+@media (max-width: 768px) {
+  .ai-block__grid { grid-template-columns: 1fr; }
+}
+
+/* ============================================
    Manifesto
    ============================================ */
 .manifesto {
