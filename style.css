@@ -80,6 +80,15 @@ h3 {
 }
 .btn--full { width: 100%; text-align: center; }
 
+.form-success {
+  padding: 24px;
+  border: 1px solid var(--c-dark);
+  text-align: center;
+  font-family: var(--font-mono);
+  font-size: 0.95rem;
+  margin-top: 16px;
+}
+
 /* ============================================
    Navigation
    ============================================ */

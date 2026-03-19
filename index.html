@@ -231,7 +231,7 @@
         <form class="form" action="https://api.web3forms.com/submit" method="POST">
           <input type="hidden" name="access_key" value="9c454fd0-c77c-4725-9b28-d3aa0776a4e2">
           <input type="hidden" name="subject" value="New contact from NordicIntent.com">
-          <input type="hidden" name="redirect" value="https://nordicintent.com">
+          <input type="hidden" name="redirect" value="">
           <input type="checkbox" name="botcheck" class="hidden" style="display:none">
           <div class="form-group">
             <label for="name">Name</label>
@@ -250,6 +250,9 @@
             <textarea id="message" name="message" rows="4"></textarea>
           </div>
           <button type="submit" class="btn btn--full">Send message &rarr;</button>
+          <div class="form-success" style="display:none;">
+            <p>Thank you — we'll be in touch shortly.</p>
+          </div>
         </form>
       </div>
     </div>
@@ -264,5 +267,29 @@
   </footer>
 
   <script src="script.js"></script>
+  <script>
+    document.querySelector('.form').addEventListener('submit', async function(e) {
+      e.preventDefault();
+      const form = e.target;
+      const btn = form.querySelector('button[type="submit"]');
+      btn.textContent = 'Sending...';
+      btn.disabled = true;
+      try {
+        const res = await fetch(form.action, { method: 'POST', body: new FormData(form) });
+        const data = await res.json();
+        if (data.success) {
+          form.reset();
+          form.querySelector('.form-success').style.display = 'block';
+          btn.style.display = 'none';
+        } else {
+          btn.textContent = 'Something went wrong — try again';
+          btn.disabled = false;
+        }
+      } catch {
+        btn.textContent = 'Something went wrong — try again';
+        btn.disabled = false;
+      }
+    });
+  </script>
 </body>
 </html>
