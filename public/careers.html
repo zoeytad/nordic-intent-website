@@ -8,7 +8,7 @@
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
   <link href="https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@400;500;700&family=Space+Mono:wght@400;700&display=swap" rel="stylesheet">
-  <link rel="stylesheet" href="style.css?v=4">
+  <link rel="stylesheet" href="style.css?v=5">
   <link rel="icon" href="favicon.png" type="image/png" sizes="32x32">
   <link rel="icon" href="favicon.png" type="image/png" sizes="192x192">
   <link rel="apple-touch-icon" href="favicon.png">
@@ -74,67 +74,160 @@
   </div>
 
   <!-- Hero -->
-  <div class="careers-hero">
-    <div class="section__label">[Careers]</div>
-    <h1>Join the team</h1>
-    <p>We're building ventures that matter — and we need sharp minds to do it. If you thrive in fast-moving environments and want to work across multiple startups, you're in the right place.</p>
-  </div>
-
-  <hr class="divider">
-
-  <!-- Open Positions -->
-  <section class="careers-section">
-    <h2>Open positions</h2>
-
-    <div class="dept-group">
-      <div class="dept-group__title">Software</div>
-      <ul class="dept-group__list">
-        <li>React JS Developer</li>
-        <li>React Native Developer</li>
-        <li>PHP Developer</li>
-        <li>.Net Developer</li>
-        <li>WordPress Developer</li>
-        <li>Tester</li>
-      </ul>
-    </div>
-
-    <div class="dept-group">
-      <div class="dept-group__title">Management</div>
-      <ul class="dept-group__list">
-        <li>Senior Project Manager</li>
-        <li>Project Manager</li>
-        <li>Associate Project Manager</li>
-        <li>Delivery Head</li>
-        <li>Delivery Manager</li>
-      </ul>
-    </div>
-
-    <div class="dept-group">
-      <div class="dept-group__title">Sales</div>
-      <ul class="dept-group__list">
-        <li>Inside Sales Executive</li>
-        <li>Account Manager</li>
-        <li>Marketing Executive</li>
-      </ul>
-    </div>
-
-    <div class="dept-group">
-      <div class="dept-group__title">Digital Marketing</div>
-      <ul class="dept-group__list">
-        <li>PPC Specialist</li>
-        <li>Senior SEO</li>
-        <li>Graphic Designer</li>
-        <li>Senior UI / UX Designer</li>
-        <li>Senior Content Writer</li>
-      </ul>
+  <section class="careers-hero">
+    <div class="careers-hero__inner">
+      <div class="section__label" style="color: var(--gray);">[Careers]</div>
+      <h1>Join the<br>team<span class="accent">.</span></h1>
+      <div class="careers-hero__bottom">
+        <p>We're building ventures that matter — and we need sharp minds to do it. If you thrive in fast-moving environments and want to work across multiple startups, you're in the right place.</p>
+        <a href="#apply" class="btn">Apply now &darr;</a>
+      </div>
+      <div class="careers-hero__stats">
+        <div class="stat">
+          <span class="stat__number">19</span>
+          <span class="stat__label">Open roles</span>
+        </div>
+        <div class="stat">
+          <span class="stat__number">4</span>
+          <span class="stat__label">Departments</span>
+        </div>
+        <div class="stat">
+          <span class="stat__number">Goa</span>
+          <span class="stat__label">Location</span>
+        </div>
+      </div>
     </div>
   </section>
 
-  <hr class="divider">
+  <!-- Open Positions -->
+  <section class="careers-positions">
+    <div class="careers-positions__inner">
+      <div class="section__label">[001 / Open Positions]</div>
+      <h2>What we're looking for</h2>
+
+      <div class="careers-dept">
+        <div class="careers-dept__header">
+          <span class="careers-dept__num">01</span>
+          <h3>Software</h3>
+        </div>
+        <div class="careers-grid">
+          <a href="#apply" class="careers-card" data-role="React JS Developer">
+            <span class="careers-card__title">React JS Developer</span>
+            <span class="careers-card__arrow">&rarr;</span>
+          </a>
+          <a href="#apply" class="careers-card" data-role="React Native Developer">
+            <span class="careers-card__title">React Native Developer</span>
+            <span class="careers-card__arrow">&rarr;</span>
+          </a>
+          <a href="#apply" class="careers-card" data-role="PHP Developer">
+            <span class="careers-card__title">PHP Developer</span>
+            <span class="careers-card__arrow">&rarr;</span>
+          </a>
+          <a href="#apply" class="careers-card" data-role=".Net Developer">
+            <span class="careers-card__title">.Net Developer</span>
+            <span class="careers-card__arrow">&rarr;</span>
+          </a>
+          <a href="#apply" class="careers-card" data-role="WordPress Developer">
+            <span class="careers-card__title">WordPress Developer</span>
+            <span class="careers-card__arrow">&rarr;</span>
+          </a>
+          <a href="#apply" class="careers-card" data-role="Tester">
+            <span class="careers-card__title">Tester</span>
+            <span class="careers-card__arrow">&rarr;</span>
+          </a>
+        </div>
+      </div>
+
+      <div class="careers-dept">
+        <div class="careers-dept__header">
+          <span class="careers-dept__num">02</span>
+          <h3>Management</h3>
+        </div>
+        <div class="careers-grid">
+          <a href="#apply" class="careers-card" data-role="Senior Project Manager">
+            <span class="careers-card__title">Senior Project Manager</span>
+            <span class="careers-card__arrow">&rarr;</span>
+          </a>
+          <a href="#apply" class="careers-card" data-role="Project Manager">
+            <span class="careers-card__title">Project Manager</span>
+            <span class="careers-card__arrow">&rarr;</span>
+          </a>
+          <a href="#apply" class="careers-card" data-role="Associate Project Manager">
+            <span class="careers-card__title">Associate Project Manager</span>
+            <span class="careers-card__arrow">&rarr;</span>
+          </a>
+          <a href="#apply" class="careers-card" data-role="Delivery Head">
+            <span class="careers-card__title">Delivery Head</span>
+            <span class="careers-card__arrow">&rarr;</span>
+          </a>
+          <a href="#apply" class="careers-card" data-role="Delivery Manager">
+            <span class="careers-card__title">Delivery Manager</span>
+            <span class="careers-card__arrow">&rarr;</span>
+          </a>
+        </div>
+      </div>
+
+      <div class="careers-dept">
+        <div class="careers-dept__header">
+          <span class="careers-dept__num">03</span>
+          <h3>Sales</h3>
+        </div>
+        <div class="careers-grid">
+          <a href="#apply" class="careers-card" data-role="Inside Sales Executive">
+            <span class="careers-card__title">Inside Sales Executive</span>
+            <span class="careers-card__arrow">&rarr;</span>
+          </a>
+          <a href="#apply" class="careers-card" data-role="Account Manager">
+            <span class="careers-card__title">Account Manager</span>
+            <span class="careers-card__arrow">&rarr;</span>
+          </a>
+          <a href="#apply" class="careers-card" data-role="Marketing Executive">
+            <span class="careers-card__title">Marketing Executive</span>
+            <span class="careers-card__arrow">&rarr;</span>
+          </a>
+        </div>
+      </div>
+
+      <div class="careers-dept">
+        <div class="careers-dept__header">
+          <span class="careers-dept__num">04</span>
+          <h3>Digital Marketing</h3>
+        </div>
+        <div class="careers-grid">
+          <a href="#apply" class="careers-card" data-role="PPC Specialist">
+            <span class="careers-card__title">PPC Specialist</span>
+            <span class="careers-card__arrow">&rarr;</span>
+          </a>
+          <a href="#apply" class="careers-card" data-role="Senior SEO">
+            <span class="careers-card__title">Senior SEO</span>
+            <span class="careers-card__arrow">&rarr;</span>
+          </a>
+          <a href="#apply" class="careers-card" data-role="Graphic Designer">
+            <span class="careers-card__title">Graphic Designer</span>
+            <span class="careers-card__arrow">&rarr;</span>
+          </a>
+          <a href="#apply" class="careers-card" data-role="Senior UI / UX Designer">
+            <span class="careers-card__title">Senior UI / UX Designer</span>
+            <span class="careers-card__arrow">&rarr;</span>
+          </a>
+          <a href="#apply" class="careers-card" data-role="Senior Content Writer">
+            <span class="careers-card__title">Senior Content Writer</span>
+            <span class="careers-card__arrow">&rarr;</span>
+          </a>
+        </div>
+      </div>
+    </div>
+  </section>
 
   <!-- Application Form -->
   <section id="apply" class="careers-apply">
-    <h2>Apply now</h2>
+    <div class="careers-apply__inner">
+      <div class="careers-apply__left">
+        <div class="section__label">[002 / Apply]</div>
+        <h2>Ready to build<br>something <span class="accent">real</span>?</h2>
+        <p class="careers-apply__text">We don't do corporate. We move fast, build hard, and back people who get things done. If that's you, we want to hear from you.</p>
+      </div>
+      <div class="careers-apply__right">
     <form class="form" id="apply-form">
       <input type="hidden" name="access_key" value="9c454fd0-c77c-4725-9b28-d3aa0776a4e2">
       <input type="hidden" name="subject" value="[NordicIntent.com] New Job Application">
@@ -213,6 +306,8 @@
         <p>Application received — we'll review it and get back to you.</p>
       </div>
     </form>
+      </div>
+    </div>
   </section>
 
   <!-- Footer -->
@@ -225,6 +320,19 @@
 
   <script src="script.js"></script>
   <script>
+    // Auto-select position when clicking a job card
+    document.querySelectorAll('.careers-card').forEach(card => {
+      card.addEventListener('click', function(e) {
+        e.preventDefault();
+        const role = this.dataset.role;
+        const select = document.getElementById('position');
+        if (select) {
+          select.value = role;
+        }
+        document.getElementById('apply').scrollIntoView({ behavior: 'smooth' });
+      });
+    });
+
     document.getElementById('apply-form').addEventListener('submit', async function(e) {
       e.preventDefault();
       const form = e.target;
