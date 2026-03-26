@@ -405,10 +405,33 @@
       const btn = form.querySelector('button[type="submit"]');
       btn.textContent = 'Sending...';
       btn.disabled = true;
+
+      const data = {
+        name: form.name.value,
+        email: form.email.value,
+        company: form.company.value,
+        message: form.message.value
+      };
+
       try {
-        const res = await fetch(form.action, { method: 'POST', body: new FormData(form) });
-        const data = await res.json();
-        if (data.success) {
+        // Submit to both: database (our API) and Web3Forms (email)
+        const [apiRes, w3fRes] = await Promise.allSettled([
+          fetch('/api/submit', {
+            method: 'POST',
+            headers: { 'Content-Type': 'application/json' },
+            body: JSON.stringify(data)
+          }),
+          fetch('https://api.web3forms.com/submit', {
+            method: 'POST',
+            body: new FormData(form)
+          })
+        ]);
+
+        // Show success if either succeeded
+        const apiOk = apiRes.status === 'fulfilled' && apiRes.value.ok;
+        const w3fOk = w3fRes.status === 'fulfilled' && w3fRes.value.ok;
+
+        if (apiOk || w3fOk) {
           form.reset();
           form.querySelector('.form-success').style.display = 'block';
           btn.style.display = 'none';
