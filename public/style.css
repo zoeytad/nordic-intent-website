@@ -453,6 +453,12 @@ h3 {
 /* Form */
 .form { display: flex; flex-direction: column; gap: 1.2rem; }
 
+.form-row {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 1.2rem;
+}
+
 .form-group { display: flex; flex-direction: column; gap: 0.3rem; }
 .form-group label {
   font-family: var(--mono);
@@ -462,7 +468,8 @@ h3 {
   color: var(--gray);
 }
 .form-group input,
-.form-group textarea {
+.form-group textarea,
+.form-group select {
   padding: 0.9rem 0;
   background: transparent;
   border: none;
@@ -471,12 +478,81 @@ h3 {
   color: var(--black);
   outline: none;
   transition: border-color 0.3s;
+  border-radius: 0;
+  -webkit-appearance: none;
+  appearance: none;
+}
+.form-group select {
+  cursor: pointer;
+  background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='12' height='8'%3E%3Cpath d='M1 1l5 5 5-5' stroke='%23888' stroke-width='1.5' fill='none'/%3E%3C/svg%3E");
+  background-repeat: no-repeat;
+  background-position: right 0 center;
 }
 .form-group input:focus,
-.form-group textarea:focus {
+.form-group textarea:focus,
+.form-group select:focus {
   border-color: var(--accent);
 }
 .form-group textarea { resize: vertical; }
+
+/* ============================================
+   Careers
+   ============================================ */
+.careers-hero {
+  padding: 8rem var(--px) 4rem;
+  max-width: var(--max-w);
+  margin: 0 auto;
+}
+.careers-hero h1 {
+  font-size: clamp(2.5rem, 6vw, 4.5rem);
+  margin-bottom: 1.5rem;
+}
+.careers-hero p {
+  font-size: 1.05rem;
+  color: var(--gray);
+  line-height: 1.7;
+  max-width: 600px;
+}
+
+.careers-section {
+  padding: 0 var(--px) 5rem;
+  max-width: var(--max-w);
+  margin: 0 auto;
+}
+
+.dept-group {
+  margin-bottom: 3rem;
+}
+.dept-group__title {
+  font-family: var(--mono);
+  font-size: 0.75rem;
+  text-transform: uppercase;
+  letter-spacing: 0.05em;
+  color: var(--accent);
+  margin-bottom: 1rem;
+}
+.dept-group__list {
+  list-style: none;
+  border-top: 1px solid var(--gray-light);
+}
+.dept-group__list li {
+  padding: 1rem 0;
+  border-bottom: 1px solid var(--gray-light);
+  font-size: 1.05rem;
+  font-weight: 500;
+}
+
+.careers-apply {
+  padding: 5rem var(--px);
+  max-width: var(--max-w);
+  margin: 0 auto;
+}
+.careers-apply h2 {
+  margin-bottom: 2rem;
+}
+.careers-apply .form {
+  max-width: 600px;
+}
 
 /* ============================================
    Footer
@@ -529,6 +605,8 @@ h3 {
 
   .portfolio-item__name { flex: 0 0 auto; margin-right: 1rem; }
   .portfolio-item__desc { display: none; }
+
+  .form-row { grid-template-columns: 1fr; }
 
   .footer__inner { flex-direction: column; gap: 0.5rem; text-align: center; }
 }

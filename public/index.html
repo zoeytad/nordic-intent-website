@@ -169,6 +169,7 @@
       <a href="#about">About</a>
       <a href="#services">Services</a>
       <a href="#manifesto">Manifesto</a>
+      <a href="/careers">Careers</a>
       <a href="#contact">Contact</a>
     </div>
     <button class="nav__toggle" aria-label="Menu">
@@ -182,6 +183,7 @@
     <a href="#about">About</a>
     <a href="#services">Services</a>
     <a href="#manifesto">Manifesto</a>
+    <a href="/careers">Careers</a>
     <a href="#contact">Contact</a>
   </div>
 
@@ -361,7 +363,8 @@
       <div class="section__right">
         <form class="form" action="https://api.web3forms.com/submit" method="POST">
           <input type="hidden" name="access_key" value="9c454fd0-c77c-4725-9b28-d3aa0776a4e2">
-          <input type="hidden" name="subject" value="New contact from NordicIntent.com">
+          <input type="hidden" name="subject" value="[NordicIntent.com] New Business Inquiry">
+          <input type="hidden" name="from_name" value="NordicIntent.com Contact Form">
           <input type="hidden" name="redirect" value="">
           <input type="checkbox" name="botcheck" class="hidden" style="display:none">
           <div class="form-group">
@@ -371,6 +374,16 @@
           <div class="form-group">
             <label for="email">Email</label>
             <input type="email" id="email" name="email" required>
+          </div>
+          <div class="form-row">
+            <div class="form-group">
+              <label for="city">City</label>
+              <input type="text" id="city" name="city">
+            </div>
+            <div class="form-group">
+              <label for="state">State</label>
+              <input type="text" id="state" name="state">
+            </div>
           </div>
           <div class="form-group">
             <label for="company">Company</label>
@@ -407,8 +420,11 @@
       btn.disabled = true;
 
       const data = {
+        source: 'NordicIntent.com',
         name: form.name.value,
         email: form.email.value,
+        city: form.city.value,
+        state: form.state.value,
         company: form.company.value,
         message: form.message.value
       };

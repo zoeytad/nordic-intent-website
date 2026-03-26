@@ -38,19 +38,42 @@ async function initDb() {
   await pool.query(`
     CREATE TABLE IF NOT EXISTS submissions (
       id SERIAL PRIMARY KEY,
+      source TEXT DEFAULT 'NordicIntent.com',
       name TEXT NOT NULL,
       email TEXT NOT NULL,
+      city TEXT,
+      state TEXT,
       company TEXT,
       message TEXT,
       created_at TIMESTAMPTZ DEFAULT NOW()
     )
   `);
+  await pool.query(`
+    CREATE TABLE IF NOT EXISTS applications (
+      id SERIAL PRIMARY KEY,
+      source TEXT DEFAULT 'NordicIntent.com',
+      name TEXT NOT NULL,
+      email TEXT NOT NULL,
+      city TEXT,
+      state TEXT,
+      position TEXT NOT NULL,
+      linkedin TEXT,
+      portfolio TEXT,
+      cv_url TEXT,
+      message TEXT,
+      created_at TIMESTAMPTZ DEFAULT NOW()
+    )
+  `);
+  // Add columns to existing submissions table if missing
+  await pool.query(`ALTER TABLE submissions ADD COLUMN IF NOT EXISTS source TEXT DEFAULT 'NordicIntent.com'`);
+  await pool.query(`ALTER TABLE submissions ADD COLUMN IF NOT EXISTS city TEXT`);
+  await pool.query(`ALTER TABLE submissions ADD COLUMN IF NOT EXISTS state TEXT`);
   console.log('Database ready');
 }
 
-// API endpoint
+// Business inquiry endpoint
 app.post('/api/submit', async (req, res) => {
-  const { name, email, company, message } = req.body;
+  const { source, name, email, city, state, company, message } = req.body;
 
   if (!name || !email) {
     return res.status(400).json({ success: false, error: 'Name and email are required' });
@@ -58,14 +81,40 @@ app.post('/api/submit', async (req, res) => {
 
   try {
     await pool.query(
-      'INSERT INTO submissions (name, email, company, message) VALUES ($1, $2, $3, $4)',
-      [name, email, company || null, message || null]
+      'INSERT INTO submissions (source, name, email, city, state, company, message) VALUES ($1, $2, $3, $4, $5, $6, $7)',
+      [source || 'NordicIntent.com', name, email, city || null, state || null, company || null, message || null]
     );
     res.json({ success: true });
   } catch (err) {
     console.error('DB insert error:', err.message);
     res.status(500).json({ success: false, error: 'Failed to save submission' });
   }
+});
+
+// Job application endpoint
+app.post('/api/apply', async (req, res) => {
+  const { source, name, email, city, state, position, linkedin, portfolio, cv_url, message } = req.body;
+
+  if (!name || !email || !position) {
+    return res.status(400).json({ success: false, error: 'Name, email, and position are required' });
+  }
+
+  try {
+    await pool.query(
+      'INSERT INTO applications (source, name, email, city, state, position, linkedin, portfolio, cv_url, message) VALUES ($1, $2, $3, $4, $5, $6, $7, $8, $9, $10)',
+      [source || 'NordicIntent.com', name, email, city || null, state || null, position, linkedin || null, portfolio || null, cv_url || null, message || null]
+    );
+    res.json({ success: true });
+  } catch (err) {
+    console.error('DB insert error:', err.message);
+    res.status(500).json({ success: false, error: 'Failed to save application' });
+  }
+});
+
+// Careers page
+app.get('/careers', (req, res) => {
+  res.setHeader('Cache-Control', 'public, max-age=0, must-revalidate');
+  res.sendFile(path.join(__dirname, 'public', 'careers.html'));
 });
 
 // Fallback to index.html
