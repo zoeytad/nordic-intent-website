@@ -655,6 +655,21 @@ h3 {
   color: rgba(255,255,255,0.6);
 }
 
+.careers-apply__notice {
+  border-left: 2px solid var(--accent);
+  padding: 0.25rem 0 0.25rem 1.5rem;
+  margin-bottom: 2.5rem;
+}
+.careers-apply__notice p {
+  font-size: 1.05rem;
+  line-height: 1.65;
+  color: rgba(255,255,255,0.85);
+}
+.careers-apply__notice p + p {
+  margin-top: 1rem;
+  color: rgba(255,255,255,0.6);
+}
+
 /* Form overrides for dark background */
 .careers-apply .form-group label {
   color: rgba(255,255,255,0.5);
