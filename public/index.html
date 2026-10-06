@@ -8,7 +8,7 @@
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
   <link href="https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@400;500;700&family=Space+Mono:wght@400;700&display=swap" rel="stylesheet">
-  <link rel="stylesheet" href="style.css?v=6">
+  <link rel="stylesheet" href="style.css?v=7">
   <link rel="icon" href="favicon.png" type="image/png" sizes="32x32">
   <link rel="icon" href="favicon.png" type="image/png" sizes="192x192">
   <link rel="apple-touch-icon" href="favicon.png">
@@ -52,8 +52,6 @@
           "postalCode": "403521",
           "addressCountry": "IN"
         },
-        "telephone": "+919168446464",
-        "email": "mail@nordicintent.com",
         "sameAs": [
           "https://www.linkedin.com/company/nordicintent",
           "https://www.instagram.com/nordicintent",
@@ -170,7 +168,7 @@
       <a href="#services">Services</a>
       <a href="#manifesto">Manifesto</a>
       <a href="/careers">Careers</a>
-      <a href="#contact">Contact</a>
+      <a href="/contact">Contact</a>
     </div>
     <button class="nav__toggle" aria-label="Menu">
       <span></span>
@@ -184,7 +182,7 @@
     <a href="#services">Services</a>
     <a href="#manifesto">Manifesto</a>
     <a href="/careers">Careers</a>
-    <a href="#contact">Contact</a>
+    <a href="/contact">Contact</a>
   </div>
 
   <!-- Hero -->
@@ -194,7 +192,7 @@
       <h1>Everything<br>starts with<br><span class="accent">Nothing</span>.</h1>
       <div class="hero__bottom">
         <p class="hero__sub">We fund, co-found, and scale ventures from the ground up. Strategy, capital, and execution — all under one roof.</p>
-        <a href="#contact" class="btn">Start a conversation &darr;</a>
+        <a href="/contact" class="btn">Start a conversation &rarr;</a>
       </div>
     </div>
     <div class="hero__stats">
@@ -341,66 +339,6 @@
     </div>
   </section>
 
-  <hr class="divider">
-
-  <!-- Contact -->
-  <section id="contact" class="section section--last">
-    <div class="section__grid section__grid--2col">
-      <div class="section__left">
-        <div class="section__label">[005 / Contact]</div>
-        <h2>Let's build something together</h2>
-        <div class="contact-details">
-          <p>Nordic Intent<br>Lane 4, PDA Colony<br>Porvorim, Goa 403521</p>
-          <p><a href="mailto:mail@nordicintent.com">mail@nordicintent.com</a></p>
-          <p><a href="tel:+919168446464">+91 91684 46464</a></p>
-        </div>
-        <div class="contact-social">
-          <a href="https://www.facebook.com" target="_blank" rel="noopener">Fb</a>
-          <a href="https://www.instagram.com" target="_blank" rel="noopener">Ig</a>
-          <a href="https://www.linkedin.com" target="_blank" rel="noopener">Li</a>
-        </div>
-      </div>
-      <div class="section__right">
-        <form class="form" action="https://api.web3forms.com/submit" method="POST">
-          <input type="hidden" name="access_key" value="9c454fd0-c77c-4725-9b28-d3aa0776a4e2">
-          <input type="hidden" name="subject" value="[NordicIntent.com] New Business Inquiry">
-          <input type="hidden" name="from_name" value="NordicIntent.com Contact Form">
-          <input type="hidden" name="redirect" value="">
-          <input type="checkbox" name="botcheck" class="hidden" style="display:none">
-          <div class="form-group">
-            <label for="name">Name</label>
-            <input type="text" id="name" name="name" required>
-          </div>
-          <div class="form-group">
-            <label for="email">Email</label>
-            <input type="email" id="email" name="email" required>
-          </div>
-          <div class="form-row">
-            <div class="form-group">
-              <label for="city">City</label>
-              <input type="text" id="city" name="city">
-            </div>
-            <div class="form-group">
-              <label for="state">State</label>
-              <input type="text" id="state" name="state">
-            </div>
-          </div>
-          <div class="form-group">
-            <label for="company">Company</label>
-            <input type="text" id="company" name="company">
-          </div>
-          <div class="form-group">
-            <label for="message">Message</label>
-            <textarea id="message" name="message" rows="4"></textarea>
-          </div>
-          <button type="submit" class="btn btn--full">Send message &rarr;</button>
-          <div class="form-success" style="display:none;">
-            <p>Thank you — we'll be in touch shortly.</p>
-          </div>
-        </form>
-      </div>
-    </div>
-  </section>
 
   <!-- Footer -->
   <footer class="footer">
@@ -411,55 +349,5 @@
   </footer>
 
   <script src="script.js"></script>
-  <script>
-    document.querySelector('.form').addEventListener('submit', async function(e) {
-      e.preventDefault();
-      const form = e.target;
-      const btn = form.querySelector('button[type="submit"]');
-      btn.textContent = 'Sending...';
-      btn.disabled = true;
-
-      const data = {
-        source: 'NordicIntent.com',
-        name: form.name.value,
-        email: form.email.value,
-        city: form.city.value,
-        state: form.state.value,
-        company: form.company.value,
-        message: form.message.value
-      };
-
-      try {
-        // Submit to both: database (our API) and Web3Forms (email)
-        const [apiRes, w3fRes] = await Promise.allSettled([
-          fetch('/api/submit', {
-            method: 'POST',
-            headers: { 'Content-Type': 'application/json' },
-            body: JSON.stringify(data)
-          }),
-          fetch('https://api.web3forms.com/submit', {
-            method: 'POST',
-            body: new FormData(form)
-          })
-        ]);
-
-        // Show success if either succeeded
-        const apiOk = apiRes.status === 'fulfilled' && apiRes.value.ok;
-        const w3fOk = w3fRes.status === 'fulfilled' && w3fRes.value.ok;
-
-        if (apiOk || w3fOk) {
-          form.reset();
-          form.querySelector('.form-success').style.display = 'block';
-          btn.style.display = 'none';
-        } else {
-          btn.textContent = 'Something went wrong — try again';
-          btn.disabled = false;
-        }
-      } catch {
-        btn.textContent = 'Something went wrong — try again';
-        btn.disabled = false;
-      }
-    });
-  </script>
 </body>
 </html>

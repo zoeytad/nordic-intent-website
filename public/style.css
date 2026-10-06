@@ -670,6 +670,11 @@ h3 {
   color: rgba(255,255,255,0.6);
 }
 
+.contact-page {
+  min-height: calc(100vh - 140px);
+  padding-top: 10rem;
+}
+
 /* Form overrides for dark background */
 .careers-apply .form-group label {
   color: rgba(255,255,255,0.5);
